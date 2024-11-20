@@ -1,0 +1,29 @@
+{
+  "name": "api-gateway",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node server.js",
+    "dev": "concurrently \"npm run dev:api-gateway\" \"npm run dev:user-service\" \"npm run dev:product-service\" \"npm run dev:invoice-service\"  \"npm run dev:customerCare-service\"  \"npm run dev:razerpay-service\"",
+    "dev:api-gateway" : " nodemon server.js",
+    "dev:user-service" : " cd ../micro-services/user-service && node check-and-install.js && nodemon server.js" ,
+    "dev:product-service":"cd ../micro-services/product-service && node check-and-install.js && nodemon server.js",
+    "dev:invoice-service":"cd ../micro-services/invoice-service && node check-and-install.js && nodemon server.js",
+    "dev:customerCare-service":"cd ../micro-services/customerCare-service && node check-and-install.js && nodemon server.js",
+    "dev:razerpay-service":"cd ../micro-services/razerpay-service && node check-and-install.js && nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.1",
+    "http-proxy-middleware": "^3.0.3"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0",
+    "nodemon": "^3.1.7"
+  }
+}
