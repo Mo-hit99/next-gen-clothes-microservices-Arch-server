@@ -9,7 +9,7 @@ dotenv.config();
 
 const port = process.env.PORT || 8001;
 const app = express();
-app.use(helmet());
+app.use(helmet({ crossOriginResourcePolicy: false,}));
 
 // const corsOptions = {
 //   origin:`${process.env.CLIENT_HTTP_LINK}`, // Allow this origin
@@ -17,6 +17,7 @@ app.use(helmet());
 //   allowedHeaders: ["Content-Type", "Authorization"],
 //   credentials: true, // If you need to include credentials (cookies, authorization headers)
 // };
+
 app.use(cors());
 
 app.use(express.json());

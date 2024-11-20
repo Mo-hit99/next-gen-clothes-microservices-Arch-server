@@ -21,10 +21,11 @@ export const User_route = express.Router();
 // get all user data
 User_route.get("/api/v1/user", get_allData);
 
-// Define the route for getting monthly user counts
-User_route.get('/api/v1/user/monthlyUserData', getMonthlyUserCounts);
 // get user data by Id
 User_route.get("/api/v1/user/:id", getById_data);
+
+// Define the route for getting monthly user counts
+User_route.get('/monthlyUserData', getMonthlyUserCounts);
 
 // update user data
 User_route.put("/api/v1/user/:id", UserUpdateData);
@@ -40,8 +41,8 @@ User_route.post("/login", userLogin);
 
 // verification otp
 User_route.post('/verification-Otp',verificationOtp)
-// forgot-password
 
+// forgot-password
 User_route.post("/forgot-password", userForgotPassword);
 
 // rest-password

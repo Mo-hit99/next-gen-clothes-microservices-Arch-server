@@ -11,16 +11,24 @@ dotenv.config();
 
 const port = process.env.PORT || 8000;
 const app = express();
-app.use(helmet());
+app.use(express.json());
+
+const httpServer = createServer(app); // Create an HTTP server from the Express app
+app.use(helmet({crossOriginResourcePolicy: false}))// Allow cross-origin requests}));
+// Allow CORS for specific origin
+app.use(cors({
+  origin: process.env.CLIENT_HTTP_LINK, // Your frontend URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
+  credentials: true // Allow cookies and other credentials
+}));
 
 // Create HTTP server
-const httpServer = createServer(app); // Create an HTTP server from the Express app
 
 // Set up Socket.io
 const io = new Server(httpServer, {
   cors: {
     origin: process.env.CLIENT_HTTP_LINK, // Adjust this as needed for your client
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    methods: ["GET","POST" ],
     credentials: true,
   },
 });
@@ -31,19 +39,9 @@ app.use((req, res, next) => {
   next();
 });
 
-const corsOptions = {
-  origin:`${process.env.CLIENT_HTTP_LINK}`, // Allow this origin
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true, // If you need to include credentials (cookies, authorization headers)
-};
-app.use(cors(corsOptions));
-
-app.use(express.json());
 
 
 app.use(CustomerCareChatBox_router);
-app.options("*", cors(corsOptions));
 
 // Handle Socket.io connections
 io.on("connection", (socket) => {

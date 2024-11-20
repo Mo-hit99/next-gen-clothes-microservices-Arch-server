@@ -15,6 +15,7 @@ const userSchema = mongoose.Schema({
     image:{type:String},
     otp:{type:String},
     isVerified:{type:Boolean,default:false},
+    createdAt: { type: Date, default: Date.now },
   },{timestamps:true});
 
 // static signup for User

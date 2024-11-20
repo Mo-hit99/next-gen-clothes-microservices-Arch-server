@@ -54,6 +54,11 @@ export const getMonthlyUserCounts = async (req, res) => {
     const totalUser= await userModel.countDocuments()
     const user_data = await userModel.aggregate([
       {
+        $match: {
+          createdAt: { $exists: true, $type: "date" } // Include only documents with valid dates
+        }
+      },
+      {
         $group: {
           _id: {
             year: { $year: "$createdAt" },
