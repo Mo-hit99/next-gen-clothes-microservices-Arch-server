@@ -7,13 +7,13 @@ const invoice_Router = express.Router();
 
 
 
-invoice_Router.get('/api/v1/payment/invoice',getInvoiceRouter);
-invoice_Router.get('/api/v1/payment/invoice/:id',getByIdInvoiceRouter);
-invoice_Router.post('/api/v1/payment/invoice',createInvoiceRouter);
-invoice_Router.put('/api/v1/payment/invoice/:id',updateInvoiceRouter);
-invoice_Router.delete('/api/v1/payment/invoice/:id',deleteInvoiceRouter);
-invoice_Router.put('/api/v1/payment/order/:invoiceId/status',UpdateOrderStatus);
-invoice_Router.get('/api/v1/payment/invoices/:invoiceId/remaining-days',getRemainingDeliveryDays);
+invoice_Router.get('/payment/invoice',getInvoiceRouter);
+invoice_Router.get('/payment/invoice/:id',getByIdInvoiceRouter);
+invoice_Router.post('/payment/invoice',createInvoiceRouter);
+invoice_Router.put('/payment/invoice/:id',updateInvoiceRouter);
+invoice_Router.delete('/payment/invoice/:id',deleteInvoiceRouter);
+invoice_Router.put('/payment/order/:invoiceId/status',UpdateOrderStatus);
+invoice_Router.get('/payment/invoices/:invoiceId/remaining-days',getRemainingDeliveryDays);
 
 
 

@@ -12,9 +12,8 @@ dotenv.config();
 const port = process.env.PORT || 8000;
 const app = express();
 app.use(express.json());
-
-const httpServer = createServer(app); // Create an HTTP server from the Express app
 app.use(helmet({crossOriginResourcePolicy: false}))// Allow cross-origin requests}));
+
 // Allow CORS for specific origin
 app.use(cors({
   origin: process.env.CLIENT_HTTP_LINK, // Your frontend URL
@@ -24,11 +23,12 @@ app.use(cors({
 
 // Create HTTP server
 
+const httpServer = createServer(app); // Create an HTTP server from the Express app
 // Set up Socket.io
 const io = new Server(httpServer, {
   cors: {
     origin: process.env.CLIENT_HTTP_LINK, // Adjust this as needed for your client
-    methods: ["GET","POST" ],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
   },
 });

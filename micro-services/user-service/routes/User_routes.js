@@ -19,19 +19,19 @@ dotenv.config();
 export const User_route = express.Router();
 
 // get all user data
-User_route.get("/api/v1/user", get_allData);
+User_route.get("/api/user", get_allData);
 
 // get user data by Id
-User_route.get("/api/v1/user/:id", getById_data);
+User_route.get("/api/user/:id", getById_data);
 
 // Define the route for getting monthly user counts
 User_route.get('/monthlyUserData', getMonthlyUserCounts);
 
 // update user data
-User_route.put("/api/v1/user/:id", UserUpdateData);
+User_route.put("/api/user/:id", UserUpdateData);
 
 // delete user data
-User_route.delete("/api/v1/user/:id", UserDeleteDate);
+User_route.delete("/api/user/:id", UserDeleteDate);
 
 // create user data register
 User_route.post("/signup", UserCreateData);

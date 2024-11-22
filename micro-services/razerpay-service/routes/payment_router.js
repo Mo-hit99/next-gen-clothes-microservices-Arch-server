@@ -4,13 +4,13 @@ const Payment_router = express.Router();
 
 // get order
 
-Payment_router.get('/api/v1/payment', getPaymentDetails)
+Payment_router.get('/api/payment', getPaymentDetails)
 
 //  create order
-Payment_router.post('/api/v1/payment/order',createPaymentOrder);
+Payment_router.post('/api/payment/order',createPaymentOrder);
 
 
-Payment_router.post ('/api/v1/payment/verify',verifyPaymentOrder)
+Payment_router.post ('/api/payment/verify',verifyPaymentOrder)
 
 
 
